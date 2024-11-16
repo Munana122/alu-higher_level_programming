@@ -1,10 +1,7 @@
--- This script 
--- Select the title of the TV show from the tv_shows table
--- and 
-
-SELECT DISTINCT tv_genres.name
+-- List all shows and their corresponding genres
+SELECT tv_shows.title, tv_genres.name
 FROM tv_shows
-JOIN tv_show_genres ON tv_shows.id = tv_show_genres.show_id
-JOIN tv_genres ON tv_show_genres.genre_id = tv_genres.id
-WHERE tv_shows.title = 'Dexter'
-ORDER BY tv_genres.name ASC;
+LEFT JOIN tv_show_genres ON tv_shows.id = tv_show_genres.show_id
+LEFT JOIN tv_genres ON tv_show_genres.genre_id = tv_genres.id
+ORDER BY tv_shows.title ASC, tv_genres.name ASC;
+
