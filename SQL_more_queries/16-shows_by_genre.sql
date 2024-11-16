@@ -1,7 +1,9 @@
-SELECT tv_shows.title, tv_genres.name
+-- This script lists all shows and their corresponding genres
+-- The results are sorted by the show title and genre name in ascending order.
+
+SELECT tv_shows.title, tv_genres.name AS genre
 FROM tv_shows
 LEFT JOIN tv_show_genres ON tv_shows.id = tv_show_genres.show_id
 LEFT JOIN tv_genres ON tv_show_genres.genre_id = tv_genres.id
-WHERE tv_genres.name IS NOT NULL
 ORDER BY tv_shows.title ASC, tv_genres.name ASC;
 
