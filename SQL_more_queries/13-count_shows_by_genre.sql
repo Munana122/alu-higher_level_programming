@@ -1,9 +1,10 @@
--- this script lists all shows from the hbtn_0d_tvshows database
--- that do not have a genre linked to them.
--- The results are sorted
+-- This script lists all genres from the hbtn_od_tvshows
+-- display the number of shows linked to each genre
+-- The results are sorted a by the number of shows in descending 
 
-SELECT tv_shows.title, tv_show_genres.genre_id
-FROM tv_shows
-LEFT JOIN tv_show_genres ON tv_shows.id = tv_show_genres.show_id
-WHERE tv_show_genres.genre_id IS NULL
-ORDER BY tv_shows.title ASC;
+SELECT tv_genres.name AS genre, COUNT(tv_show_genres.show_id) AS number_of_shows
+FROM tv_genres
+LEFT JOIN tv_show_genres ON tv_genres.id = tv_show_genres.genre_id
+GROUP BY tv_genres.name
+HAVING COUNT(tv_show_genres.show_id) > 0
+ORDER BY number_of_shows DESC;
