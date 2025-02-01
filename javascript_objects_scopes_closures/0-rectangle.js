@@ -1,4 +1,4 @@
-#1/usr/bin/node
+#!/usr/bin/node
 class Reactangle{
 }
 module.exports = Rectangle;
